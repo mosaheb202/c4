@@ -1,7 +1,7 @@
 import pygame
-import c4_view.py
-import c4.py
-import disk.py
+import c4_view
+import c4
+import disk
 
 """
 This will quite literally be the board within the connect 4 game.

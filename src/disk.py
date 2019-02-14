@@ -1,4 +1,4 @@
-import c4_model.py
+import c4_model
 
 """
 Each disk will have it's own x and y coordinate.
