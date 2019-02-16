@@ -1,6 +1,6 @@
 import pygame
-import c4_model.py
-import c4_view.py
+import c4_model
+import c4_view
 
 """
 This is the class which actually runs the game.
