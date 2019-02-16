@@ -11,11 +11,24 @@ The model houses all the disks.
 """
 class model: 
     def __init__():
-        pass
+        """
+        intialized the framework of the game, setting 0 as a space in the frame
+        without a disk
+        """
+        frame = []
+        for i in range(7):
+            frame.append([0, 0, 0, 0, 0, 0, 0])
     
     def game_over():
         """
         returns True if the game is one by a player.
         Should work based on the spacing of disks?
+        """
+        pass
+    
+    def insert_disk():
+        """
+        inserts the given disk into the frame
+        disk object should be a argument for this method
         """
         pass
