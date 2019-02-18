@@ -7,6 +7,9 @@ This is the class which actually runs the game.
 
 """
 
+pygame.init()
+
 class c4:
     def __init__():
-        pass
+        view = View()
+        

@@ -9,15 +9,17 @@ The model houses all the disks.
 
 
 """
-class model: 
+class model:
+    
     def __init__():
         """
         intialized the framework of the game, setting 0 as a space in the frame
         without a disk
         """
-        frame = []
+        this.commands = c4_commands(); #added a command queue
+        this.frame = []
         for i in range(7):
-            frame.append([0, 0, 0, 0, 0, 0, 0])
+            this.frame.append([0, 0, 0, 0, 0, 0, 0])
     
     def game_over():
         """
