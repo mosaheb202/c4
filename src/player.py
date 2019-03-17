@@ -1,4 +1,4 @@
-import c4_model
+import c4model
 from point import Point
 from disk import Disk
 
