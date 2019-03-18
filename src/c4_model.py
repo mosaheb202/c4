@@ -22,7 +22,7 @@ class model:
         self.current_player = 1
         self.frame = []
         for i in range(7):
-            this.frame.append([0, 0, 0, 0, 0, 0, 0])
+            this.frame.append([None, None, None, None, None, None, None])
     
     def game_over(self, player):
         """
