@@ -18,6 +18,7 @@ class model:
         without a disk
         """
         self.commands = c4_commands(); #added a command queue
+        self.current_player = 1
         self.frame = []
         for i in range(7):
             this.frame.append([0, 0, 0, 0, 0, 0, 0])
@@ -63,4 +64,7 @@ class model:
                 else:
                     self.frame[i][column] = 2;
                     return True
-        return False        
+        return False
+    
+    def turn():
+        self.current_player = 3 - current_player    
