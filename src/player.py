@@ -11,7 +11,7 @@ class Player:
 
     def __init__(self, number, color_disk):
         self.number = number
-        self.colorDisk = color_disk
+        self.color = color_disk
         self.numDisks = num_disks 
     
     def get_player_number(self):
@@ -21,11 +21,9 @@ class Player:
         self.number = number
         
     def get_color_disk(self):
-        return self.color_disk
+        return self.color
     
     def set_color_disk(self, color_disk):
-        self.color_disk = color_disk
-        
- 
+        self.color = color_disk
     
     
