@@ -3,6 +3,7 @@ import c4_view
 import c4
 import disk
 from player import Player
+from point import Point
 
 """
 This will quite literally be the board within the connect 4 game.
@@ -50,21 +51,17 @@ class model:
                     return True
         return False        
     
-    def insert_disk(self, player, column):
+    def insert_disk(self, column):
         """
         inserts a player's disk on the frame and updates 
         it. It will require the player number and the column 
         the player chooses to place his/her disk.
         """
-        for i in range (5,-1,-1):
-            if self.frame[i][column] == 0:
-                if player.get_player_number() == 1:
-                    self.frame[i][column] = 1;
-                    return True
-                else:
-                    self.frame[i][column] = 2;
-                    return True
-        return False
+        for row in range (5,-1,-1):
+            if self.frame[row][column] == None:
+                self.frame[row][column] = Disk(point(row, column), self.current_player)
+                turn()
+        return False 
     
     def turn():
         self.current_player = 3 - current_player    
