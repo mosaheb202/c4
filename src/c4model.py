@@ -1,6 +1,4 @@
 import pygame
-import c4_view
-import c4
 import disk
 from player import Player
 from point import Point
@@ -11,7 +9,7 @@ The model houses all the disks.
 
 
 """
-class model:
+class Model:
     
     def __init__(self):
         """
