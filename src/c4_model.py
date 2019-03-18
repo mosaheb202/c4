@@ -20,6 +20,7 @@ class model:
         """
         self.commands = c4_commands(); #added a command queue
         self.current_player = 1
+        self.available_slots = 42
         self.frame = []
         for i in range(7):
             this.frame.append([None, None, None, None, None, None, None])
@@ -65,11 +66,19 @@ class model:
         it. It will require the player number and the column 
         the player chooses to place his/her disk.
         """
-        for row in range (5,-1,-1):
-            if self.frame[row][column] == None:
-                self.frame[row][column] = Disk(point(row, column), self.current_player)
-                turn()
+        if (is_filled() == False):
+            for row in range (5,-1,-1):
+                if self.frame[row][column] == None:
+                    self.frame[row][column] = Disk(point(row, column), self.current_player)
+                    self.available_slots -= 1
+                    turn()
+                    return True
         return False 
+    
+    def is_filled(self):
+        if self.available_slots == 0:
+            return True
+        return False
     
     def turn():
         self.current_player = 3 - current_player    
