@@ -1,7 +1,7 @@
 import pygame
 import c4model
 #import c4
-import disk
+#import disk
 
 """
 This is the view which contains all of the visuals that the user will see. 
@@ -9,8 +9,8 @@ It has a model and the GUI (stage) that the user will see.
 """
 #Define Dimension constants
 SIZE = 100
-NUMB_COLUMNS = 6
-NUMB_ROWS = 7
+NUMB_COLUMNS = 7
+NUMB_ROWS = 6
 WIDTH = SIZE * NUMB_COLUMNS
 HEIGHT = (SIZE * NUMB_ROWS) + SIZE
 RADIUS = (SIZE//2-10)
@@ -42,7 +42,7 @@ class View:
         """
         All our GUI stuff that involves creating the GUI will go here.
         """
-        stage = pygame.display.set_mode([600, 800])
+        stage = pygame.display.set_mode([700, 800])
         self.draw_stage(stage)
         return stage
     
