@@ -10,10 +10,22 @@ display to the user.
 class Disk:
 
     # Constructor to set the colour, point object and dropped status
-    def __init__(self, color, point):
-        self.color = color
+        # Constructor to set the colour, point object and dropped status
+    def __init__(self, point, player):
+        if player == 1:
+	    self.color = "red"
+	    self.player = player(1, self.color)
+	else:
+	    self.color = "blue"
+	    self.player = player(2, self.color)
         self.point = point
         self.dropped = False
+
+    def getPlayer(self):
+	"""
+	Returns the current player
+	"""
+	return self.player
 
     # Function to get the colour of the disk
     def getColor(self):
@@ -23,6 +35,9 @@ class Disk:
     def setColor(self, color):
     	self.color = color
 
+    def getPoint():
+	return self.point
+
     # Function to check of disk is dropped
     def isDropped(self):
     	return self.dropped
@@ -31,6 +46,10 @@ class Disk:
     def changeDiskStatus(self):
     	if (self.dropped is False):
     		self.dropped = True
-    	
-
- 
+		
+    def __eq__(self, other):
+	if self.player.get_player_number() == other.player.get_player_number():
+	    return True
+	return False
+    
+    
