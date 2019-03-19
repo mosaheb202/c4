@@ -31,7 +31,7 @@ LIGHT_BLUE = (0, 0, 245)
 WHITE = (255,255,255)
 
 #Define Image Constants
-HELP_MENU_IMAGE = pygame.image.load('Images/C4 Help Menu.png')
+#HELP_MENU_IMAGE = pygame.image.load('Images/C4 Help Menu.png')
 
 pygame.init()
 
@@ -49,7 +49,7 @@ class View:
     
     def __init__(self, model):
         self.model = model
-        pygame.init()
+        #pygame.init()
         self.stage = self.create_stage()
         
     def get_model():
@@ -67,7 +67,7 @@ class View:
         """
         All our GUI stuff that involves creating the GUI will go here.
         """
-        stage = pygame.display.set_mode([700, 800])
+        stage = pygame.display.set_mode([SCREEN_HEIGHT + SIZE, 800])
         self.draw_stage(stage)
         return stage
 
@@ -87,7 +87,7 @@ class View:
         screen_display.blit(text_surface, text_rectangle)
             
                                     
-    def start_screen():
+    def start_screen(self):
                                         
         intro = True
                                             
@@ -120,12 +120,12 @@ class View:
             pygame.display.update()
             clock.tick(15)
 
-    def help_menu():
-        screen_display.blit(HELP_MENU_IMAGE)
+    def help_menu(self):
+        #screen_display.blit(HELP_MENU_IMAGE)
         pygame.display.update()
 
-start_screen()
-help_menu()
+#start_screen()
+#help_menu()
 
 
     

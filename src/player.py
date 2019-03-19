@@ -1,6 +1,6 @@
 import c4model
 from point import Point
-from disk import Disk
+#from disk import Disk
 
 """
 A Player class contains the information about the player. The information
