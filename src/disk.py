@@ -46,9 +46,8 @@ class Disk:
     def changeDiskStatus(self):
     	if (self.dropped is False):
     		self.dropped = True
-    
+		
     def __eq__(self, other):
 	if self.player.get_player_number() == other.player.get_player_number():
 	    return True
 	return False
-    
