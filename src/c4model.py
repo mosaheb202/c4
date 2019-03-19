@@ -1,12 +1,11 @@
 import pygame
-import disk
+#import disk
 from player import Player
 from point import Point
 
 """
 This will quite literally be the board within the connect 4 game.
 The model houses all the disks.
-
 
 """
 class Model:
@@ -16,12 +15,12 @@ class Model:
         intialized the framework of the game, setting 0 as a space in the frame
         without a disk
         """
-        self.commands = c4_commands(); #added a command queue
+        #self.commands = c4_commands(); #added a command queue
         self.current_player = 1
         self.available_slots = 42
         self.frame = []
         for i in range(7):
-            this.frame.append([None, None, None, None, None, None, None])
+            self.frame.append([None, None, None, None, None, None, None])
     
     def game_over(self, disk):
         """
