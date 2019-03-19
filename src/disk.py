@@ -41,21 +41,14 @@ class Disk:
     # Function to check of disk is dropped
     def isDropped(self):
     	return self.dropped
-
+    
     # Function to change the status of a disk when dropped
     def changeDiskStatus(self):
     	if (self.dropped is False):
     		self.dropped = True
-<<<<<<< HEAD
-    	
-
- 
-=======
-		
+    
     def __eq__(self, other):
 	if self.player.get_player_number() == other.player.get_player_number():
 	    return True
 	return False
     
-    
->>>>>>> fbe5e3bb4e29deb6d111428e24c6acebf5b58767

@@ -12,4 +12,11 @@ class diskCommand:
         Typically will call a strategy design pattern to actually create the
         disk.
         """
-        pass
+        if (is_filled() == False):
+            for row in range (5,-1,-1):
+                if self.frame[row][column] == None:
+                    self.frame[row][column] = Disk(point(row, column), self.current_player)
+                    self.available_slots -= 1
+                    turn()
+                    return True
+        return False        
