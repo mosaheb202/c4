@@ -30,15 +30,19 @@ LIGHT_GREEN = (0, 245, 0)
 LIGHT_BLUE = (0, 0, 245)
 WHITE = (255,255,255)
 
+#Define Image Constants
+HELP_MENU_IMAGE = pygame.image.load('Images/C4 Help Menu.png')
+
 pygame.init()
 
-screenDisplay = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('C4: A Connect 4 Game')
 clock = pygame.time.Clock()
 
+
 def print_text(text, font):
-    textSurface = font.render(text, True, BLACK)
-    return textSurface, textSurface.get_rect()
+    text_surface = font.render(text, True, BLACK)
+    return text_surface, text_surface.get_rect()
 
 
 class View:
@@ -72,15 +76,15 @@ class View:
 
         # if user hovers over button
         if x + width > user_mouse[0] > x and y + height > user_mouse[1] > y:
-            pygame.draw.rect(gameDisplay, active_colour,(x, y, width, height))
+            pygame.draw.rect(screen_display, active_colour,(x, y, width, height))
         else:
-            pygame.draw.rect(gameDisplay, original_color, (x, y, width, height))
+            pygame.draw.rect(screen_display, original_color, (x, y, width, height))
                         
-        smallText = pygame.font.Font("freesansbold.ttf",20)
+        small_text = pygame.font.Font("freesansbold.ttf",20)
                                 
-        textSurface, textRectangle = print_text(text, smallText)
-        textRectangle.center = ((x + (width / 2)), (y + (height / 2)))
-        gameDisplay.blit(textSurface, textRectangle)
+        text_surface, text_rectangle = print_text(text, small_text)
+        text_rectangle.center = ((x + (width / 2)), (y + (height / 2)))
+        screen_display.blit(text_surface, text_rectangle)
             
                                     
     def start_screen():
@@ -95,13 +99,13 @@ class View:
                     pygame.quit()
                     quit()
                                                             
-            gameDisplay.fill(BLACK)
+            screen_display.fill(BLACK)
 
-            largeText = pygame.font.Font('freesansbold.ttf',115)
+            large_text = pygame.font.Font('freesansbold.ttf',115)
                                                                 
-            TextSurface, TextRectangle = print_text("C4: A Connect 4 Game", largeText)
-            TextRectangle.center = ((SCREEN_WIDTH / 2),(SCREEN_HEIGHT / 2))
-            screenDisplay.blit(TextSurface, TextRectangle)
+            text_surface, text_rectangle = print_text("C4: A Connect 4 Game", large_text)
+            text_rectangle.center = ((SCREEN_WIDTH / 2),(SCREEN_HEIGHT / 2))
+            screen_display.blit(text_surface, text_rectangle)
 
             # start button
             make_button("Start!", 100, 500, 100, 70, GREEN, LIGHT_GREEN)
@@ -116,7 +120,12 @@ class View:
             pygame.display.update()
             clock.tick(15)
 
+    def help_menu():
+        screen_display.blit(HELP_MENU_IMAGE)
+        pygame.display.update()
+
 start_screen()
+help_menu()
 
 
     
