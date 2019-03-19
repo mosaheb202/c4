@@ -18,4 +18,10 @@ class C4:
 if __name__ == '__main__':
     C4.start()
     
-    
+
+class c4:
+    def __init__():
+        view = View()
+        
+        
+        
