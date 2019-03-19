@@ -31,32 +31,29 @@ class Model:
         """
         x_coord = disk.getPoint().getX()
         y_coord = disk.getPoint().getY()
-
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord-i][y_coord] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord+i][y_coord] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord][y_coord-i] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord][y_coord+i] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord+i][y_coord+i] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord+i][y_coord-i] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord-i][y_coord+i] != disk):
-                return False
-        for i in range (1, 4, 1):
-            if(self.frame[x_coord-i][y_coord-i] != disk):
-                return False
-        return True        
+        consecutive_disks = [0,0,0,0,0,0,0,0]
+        
+        for shift in range (1, 4, 1):
+            if(self.frame[x_coord-shift][y_coord] == disk):
+                consecutive_disks[0] += 1
+            if(self.frame[x_coord+shift][y_coord] == disk):
+                consecutive_disks[1] += 1
+            if(self.frame[x_coord][y_coord-shift] == disk):
+                consecutive_disks[2] += 1
+            if(self.frame[x_coord][y_coord+shift] == disk):
+                consecutive_disks[3] += 1
+            if(self.frame[x_coord+shift][y_coord+shift] == disk):
+                consecutive_disks[4] += 1
+            if(self.frame[x_coord+shift][y_coord-shift] == disk):
+                consecutive_disks[5] += 1
+            if(self.frame[x_coord-shift][y_coord+shift] == disk):
+                consecutive_disks[6] += 1
+            if(self.frame[x_coord-shift][y_coord-shift] == disk):
+                consecutive_disks[7] += 1
+                
+        if(3 in consecutive_disks):
+            return True
+        return False        
     
     def insert_disk(self, column):
         """
