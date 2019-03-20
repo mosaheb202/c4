@@ -96,8 +96,11 @@ def start_screen():
         clock.tick(15)
         
 def draw_stage():
-    
-    screen_display.fill(BLUE)
+    """
+    Draws the game board and keeps the users on the screen
+    until the user closes the game.
+    """
+    #screen_display.fill(BLUE)
     
     start = True
     while start:
@@ -110,11 +113,19 @@ def draw_stage():
                 
         for col in range(NUMB_COLUMNS):
             for row in range(NUMB_ROWS):
-                #pygame.draw.rect(screen_display, BLUE, [col*SIZE, row*SIZE + SIZE, SIZE, SIZE])
+                pygame.draw.rect(screen_display, BLUE, [col*SIZE, row*SIZE + SIZE, SIZE, SIZE])
                 pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
             
         pygame.display.update()
 
+def create_stage():
+        """
+        Returns the game board after setting the dimensions and drawing it.
+        """
+        stage = pygame.display.set_mode([SCREEN_HEIGHT + SIZE, 800])
+        draw_stage(stage)
+        return stage
+    
 def help_menu():
     start = True
     while start:
@@ -148,8 +159,7 @@ class C4:
         """
         #model = Model()
         #view = View(model)
-        stage = v.create_stage() #TODO: initialize start screen and link
-                                 #stage to start screen 
+        stage = start_screen()
 
 if __name__ == '__main__':
     c4 = C4()
@@ -168,15 +178,13 @@ if __name__ == '__main__':
                 #player 1 drops his disk
                 #checks for game over
                 break
-                #continue
+
             elif player%2 == 0: #player 2
                 #player 2 drops his disk
                 #checks for game over
                 break
-                #continue
 
             player += 1
-            #player = player % 2
     print("Game is done if this is printed")
 
     #Comment main out to see GUI if there is errors.
