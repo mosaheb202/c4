@@ -121,11 +121,9 @@ class View:
             clock.tick(15)
 
     def help_menu(self):
-        #screen_display.blit(HELP_MENU_IMAGE)
+        screen_display.blit(HELP_MENU_IMAGE)
         pygame.display.update()
 
-#start_screen()
-#help_menu()
 
 
     
