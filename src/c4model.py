@@ -20,7 +20,7 @@ class Model:
         self.available_slots = 42
         self.frame = []
         for i in range(7):
-            self.frame.append([None, None, None, None, None, None, None])
+            self.frame.append([None]*7)
     
     def game_over(self, disk):
         """
@@ -62,8 +62,8 @@ class Model:
         """
         if (is_filled() == False):
             for row in range (5,-1,-1):
-                if self.frame[row][column] == None:
-                    self.frame[row][column] = Disk(point(row, column), self.current_player)
+                if self.frame[row][column] != None:
+                    self.frame[row+1][column] = Disk(point(row, column), self.current_player)
                     self.available_slots -= 1
                     turn()
                     return True

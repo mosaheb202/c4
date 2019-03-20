@@ -1,5 +1,6 @@
 import c4model
 from point import Point
+from player import Player
 
 """
 A Disk class which has a point object to reference where on the grid
@@ -12,12 +13,11 @@ class Disk:
     # Constructor to set the colour, point object and dropped status
         # Constructor to set the colour, point object and dropped status
     def __init__(self, point, player):
-        if player == 1:
-	    self.color = "red"
-	    self.player = player(1, self.color)
+        #I removed self.color, because I don't know how each player will be choosing the color.
+	if player == 1:
+	    self.player = Player(1)
 	else:
-	    self.color = "blue"
-	    self.player = player(2, self.color)
+	    self.player = Player(2)
         self.point = point
         self.dropped = False
 

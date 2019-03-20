@@ -1,4 +1,6 @@
-class c4_commands:
+#from c4_model import Model
+
+class Commands:
     def __init__(self):
         self.command_queue = []
         
@@ -7,6 +9,12 @@ class c4_commands:
         Add a command to the command queue
         """
         self.command_queue.append(command)
+        
+    def remove_command(self, command):
+        """
+        Remove a command from the command queue
+        """
+        self.command_queue.pop()
         
     def empty(self):
         """
@@ -20,3 +28,5 @@ class c4_commands:
         """
         for disk in self.command_queue:
             disk.execute()
+            
+    
