@@ -66,21 +66,21 @@ class Model:
         consecutive_disks = [0,0,0,0,0,0,0,0]
         
         for shift in range (1, 4, 1): # Checking if there is a connection of four disks horizonally, vertically, or diagonally
-            if(self.frame[x_coord-shift][y_coord] == disk):
+            if(x_coord-shift >= 0 and self.frame[x_coord-shift][y_coord] == disk):
                 consecutive_disks[0] += 1
-            if(self.frame[x_coord+shift][y_coord] == disk):
+            if(x_coord-shift <= 6 and self.frame[x_coord+shift][y_coord] == disk):
                 consecutive_disks[1] += 1
-            if(self.frame[x_coord][y_coord-shift] == disk):
+            if(y_coord-shift >= 0 and self.frame[x_coord][y_coord-shift] == disk):
                 consecutive_disks[2] += 1
-            if(self.frame[x_coord][y_coord+shift] == disk):
+            if(y_coord-shift <= 5 and self.frame[x_coord][y_coord+shift] == disk):
                 consecutive_disks[3] += 1
-            if(self.frame[x_coord+shift][y_coord+shift] == disk):
+            if(x_coord-shift <= 6 and y_coord-shift <= 5 and self.frame[x_coord+shift][y_coord+shift] == disk):
                 consecutive_disks[4] += 1
-            if(self.frame[x_coord+shift][y_coord-shift] == disk):
+            if(x_coord-shift <= 6 and y_coord-shift >= 0 and self.frame[x_coord+shift][y_coord-shift] == disk):
                 consecutive_disks[5] += 1
-            if(self.frame[x_coord-shift][y_coord+shift] == disk):
+            if(x_coord-shift >= 0 and y_coord-shift <= 5 and self.frame[x_coord-shift][y_coord+shift] == disk):
                 consecutive_disks[6] += 1
-            if(self.frame[x_coord-shift][y_coord-shift] == disk):
+            if(x_coord-shift >= 0 and y_coord-shift >= 0 and self.frame[x_coord-shift][y_coord-shift] == disk):
                 consecutive_disks[7] += 1
                 
         if(3 in consecutive_disks): # Returns true if there four disks are connected
