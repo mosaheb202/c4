@@ -50,6 +50,12 @@ class Model:
         """
         return self._column_amounts[column]
     
+    def get_frame(self):
+        """
+        Return the frame we're using."
+        """
+        return self.frame
+    
     def game_over(self, disk):
         """
         This function checks if the disk that is inserted caused 
