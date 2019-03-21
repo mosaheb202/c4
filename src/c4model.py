@@ -84,7 +84,7 @@ class Model:
                 consecutive_disks[7] += 1
                 
         if(3 in consecutive_disks): # Returns true if there four disks are connected
-            return True
+            return disk.get_player().get_player_number()
         return False        
     
     def insert_disk(self, column):
