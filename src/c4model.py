@@ -38,10 +38,16 @@ class Model:
             #if i != None:
                 #self._column_amounts[column] += 1
     
-    def get_colors(self, column, row):
-            return self.frame[column][row]
+    def get_disk(self, column, row):
+        """
+        Return the disk at column and row inside of self.frame
+        """
+        return self.frame[column][row]
 
     def column_amount(self, column):
+        """
+        Return the number of disks inside of a given column
+        """
         return self._column_amounts[column]
     
     def game_over(self, disk):
@@ -111,6 +117,12 @@ class Model:
         return False
     
     def update(self):
+        """
+        update self.status
+        
+        NOTE: self.status is used to tell the view whether it is behind the model,
+        or if it is up to date
+        """
         if self.update == False:
             return True
         else:

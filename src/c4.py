@@ -126,7 +126,7 @@ class C4:
         
         start = True
         while start:
-            self.make_button("Back", 5, 5, 50, 50, RED, LIGHT_RED, self.start)
+            self.make_button("<", 5, 5, 30, 40, RED, LIGHT_RED, self.start)
             for event in pygame.event.get():
                 
                 if event.type == pygame.QUIT:
@@ -137,12 +137,13 @@ class C4:
             for col in range(NUMB_COLUMNS):
                 #self.make_button("Back", col, 50, 50, None, None, self.add_disk)
                 #for row in range(NUMB_ROWS):
+                self.add_column(col*SIZE + SIZE//2)
                 disks = 0 #self.model.column_amount(col)
                 for row in range(0, 6 - disks):
                     pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
                 #for row in range(6 - disks, disks):
-                    #disk = self.model.get_color(col, row) #All of the values that we get should be disks.
-                    #color = disk.getColor()
+                    #disk = self.model.get_disk(col, row) #All of the values that we get should be disks.
+                    #color = disk.get_color()
                     #pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)                    
                     
             #if self.model.update():
@@ -170,29 +171,24 @@ class C4:
             self.make_button("Back", 0, 50, 100, 50, RED, LIGHT_RED, self.start)
             pygame.display.update()
     
-    #def add_disk():
-        #"""
-        #Will add a disk to the model when a column is clicked, then the model will return and call draw_stage.
-        #"""
-        #pass
+    def add_disk(self):
+        """
+        Will add a disk to the model when a column is clicked, then the model will return and call draw_stage.
+        """
+        pass
         
-    #def column():
-        #"""
-        #Update current stage to have 7 columns for actual game play.
-        #These columns are where the players will click in order to drop a disk.
-        #"""
-        #for i in range(0,7):      
-            #self.make_button("", 0, 50, 100, 50, RED, LIGHT_RED, self.start)
+    def add_column(self, x):
+        """
+        Update current stage to have 7 columns for actual game play.
+        These columns are where the players will click in order to drop a disk.
+        """
+        self.make_button("", x, 0, 100, 800, BLUE, LIGHT_BLUE, self.start)
     
-    #def update_game():
-        #"""
-        #Update the view by calling on the Model.
-        #"""
-        #for col in range(NUMB_COLUMNS):
-            #for row in range(NUMB_ROWS):
-                #pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)        
-        
-        #pass
+    def update_game(self):
+        """
+        Update the view by calling on the Model.
+        """
+        pass
     
     def game_quit(self):
         pygame.quit()
