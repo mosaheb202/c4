@@ -1,3 +1,12 @@
+'''
+Credit to this tutorial: https://pythonprogramming.net/pygame-python-3-part-1-intro/
+made by Harrison Kinsley.
+
+This tutorial was extremely helpful in helping determine GUI components, and 
+button functionality.
+
+'''
+
 import pygame
 import time
 import random
@@ -7,6 +16,7 @@ from c4model import Model
 """
 This is the class which actually runs the game.
 It serves the purpose of being a hybrid of the view/controller.
+
 """
 #Initialize Pygame
 pygame.init()
@@ -142,6 +152,7 @@ class C4:
             self.make_button("Exit", 550, 450, 100, 70, RED, LIGHT_RED, self.game_quit)
             
             pygame.display.update()
+            
             clock.tick(15)
         
     #def wait(self, time_start):
@@ -187,6 +198,7 @@ class C4:
                 for row in range(6 - disks, disks):
                     disk = self.model.get_disk(col, row) #All of the values that we get should be disks.
                     color = disk.get_color()
+                    
                     pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)                    
                     
             #if self.model.update():
