@@ -1,4 +1,3 @@
-import c4model
 from point import Point
 
 #Define Color Constants
@@ -24,7 +23,6 @@ class Player:
             self.color = GREEN
         else:
             self.color = RED
-        self.numDisks = num_disks 
     
     def get_player_number(self):
         """

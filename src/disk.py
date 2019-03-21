@@ -1,4 +1,3 @@
-import c4model
 from point import Point
 from player import Player
 
@@ -62,6 +61,8 @@ class Disk:
 		"""
 		Returns if players are the same
 		"""
+		if other == None:
+			return False
 		if self.player.get_player_number() == other.player.get_player_number():
 			return True
 		return False

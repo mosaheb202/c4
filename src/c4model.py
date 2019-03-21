@@ -1,7 +1,7 @@
 import pygame
-import player
-import point
-import disk
+from player import Player
+from point import Point
+from disk import Disk
 
 """
 This is a model class. This class is used to update and keep track of 
@@ -96,15 +96,16 @@ class Model:
         will return false. If it inserts a disk object successfully, 
         it returns true.
         """
-        if (is_filled() == False): # Checks if board is not full
+        if (self.is_filled() == False): # Checks if board is not full
             for row in range (5,-1,-1): # Loops through rows to make sure there is an empty space to create a disk object
                 if self.frame[row][column] == None:
-                    self.frame[row][column] = Disk(point(row, column), self.current_player)
+                    self.frame[row][column] = Disk(Point(row, column), self.current_player)
                     self.available_slots -= 1
                     self._column_amounts[column] += 1
-                    turn() # Changes turn to next player once disk is 'inserted' and tells the game to update
+                    print(self._column_amounts)
+                    self.turn() # Changes turn to next player once disk is 'inserted' and tells the game to update
                     return True
-        return False 
+        return False
     
     def is_filled(self):
         """
@@ -128,10 +129,10 @@ class Model:
         else:
             return False
     
-    def turn():
+    def turn(self):
         """
         This function switches the turn of the two players 
         playing the game.
         """
         self.status = False
-        self.current_player = 3 - current_player
+        self.current_player = 3 - self.current_player
