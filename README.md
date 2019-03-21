@@ -101,18 +101,25 @@ Click on that button to begin your connect four game.
 
 2) Click on the column where you would like to place a disk.
 Note that the disk will fall to the bottom of the column or on top on another disk.
-The second player will choose a location to place their disk. This sequence will 
+The second player will now choose a column to place their disk. This sequence will 
 continue to go back and forth until the game is over.
 
 4) Try to win. The first player to get four disks in a row vertically,
 horizontally, or diagonally wins.
 
-5) Once the game is over, click on 'X' on your window. It will terminate the 
-application. If you want to play again, you must relaunch the game. Alternatively, 
-you can click the back button which will send you to the main menu, however, your 
-game progress will be lost.
+5) While you are playing the game, you can click the '<' button to return 
+to the main menu. This is useful if you want to visit the 'How to Play' section.
+Don't worry, your game progress will be saved!
 
-6) For more information, click on the 'How to Play' button in the main menu.
+6) You can also click the 'Re' button while in game. This will send you back to 
+the main menu, however, it will reset your game. Your game progress will not 
+be saved!
+
+7) Once the game is over, you can click on 'X' on your window to terminate the 
+program. You can also click on the 'restart' button, it will send you to the main 
+menu where you can choose to play the game again.
+
+8) For more information, click on the 'How to Play' button in the main menu.
 
 ### Documentation
 

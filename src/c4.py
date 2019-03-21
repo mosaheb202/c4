@@ -55,7 +55,6 @@ class C4:
         Initialize the model and view to start up the game
         """
         self.model = Model()
-        #self.view = View(self.model)
         self.start()
         
     def print_text(self, text, font):
@@ -86,8 +85,7 @@ class C4:
         else:
             pygame.draw.rect(screen_display, original_color, (x, y, width, height))
         
-        
-        #textsize = (height * width)//350
+        #Puts text onto the button.
         small_text = pygame.font.Font("freesansbold.ttf", 20)                       
         text_surface, text_rectangle = self.print_text(text, small_text)
         text_rectangle.center = ((x + (width / 2)), (y + (height / 2)))
@@ -95,9 +93,7 @@ class C4:
             
     def make_column(self, text, x, y, width, height, original_color, active_colour, func, column):
         """
-        Creates a button with text and postion x, y on the GUI. The button is a rectangle, so
-        it has its own width, height, color and active color that it turns lighter when the user
-        hovers over it. The button also performs the function that is passed in when clicked.
+        This is basically like a button, except it encompasses the entire column.
         """
         
         user_mouse = pygame.mouse.get_pos()
@@ -113,8 +109,6 @@ class C4:
         else:
             pygame.draw.rect(screen_display, original_color, (x, y, width, height))
         
-        
-        #textsize = (height * width)//350
         small_text = pygame.font.Font("freesansbold.ttf", 20)                       
         text_surface, text_rectangle = self.print_text(text, small_text)
         text_rectangle.center = ((x + (width / 2)), (y + (height / 2)))
@@ -155,7 +149,7 @@ class C4:
             pygame.display.update()
             
             clock.tick(15)
-        
+            
     #def wait(self, time_start):
             #"""
             #A function that allows the view to wait for the transition of screens
@@ -181,13 +175,12 @@ class C4:
         start = True
         while start:
             p = 3 - self.model.get_player()
-            self.make_button("PLAYER " + p + " WINS", 800//2, 600//2, 500, 70, BLUE, LIGHT_GREEN, self.start)
+            self.make_button("PLAYER " + str(p) + " WINS", 800//2, 600//2, 500, 70, BLUE, LIGHT_GREEN, self.start)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-        
-        pygame.display.update()     
+            pygame.display.update()     
         
     def draw_stage(self):
         """
@@ -195,17 +188,14 @@ class C4:
         until the user closes the game.
         """
         screen_display.fill(BLUE)
-        
-        #time_start = pygame.time.get_ticks()
-        
-        #while self.wait(time_start):
-            #print("buffering")
             
         sleep(0.2) #Need to sleep in order for the click to open this screen doesn't also click on this screen
         
         start = True
         while start:
+            #Back and Restart button respectively
             self.make_button("<", 5, 5, 30, 40, RED, LIGHT_RED, self.start)
+            self.make_button("Re",5, 50, 30, 40, GREEN, LIGHT_GREEN, self.clear_board)
             for event in pygame.event.get():
                 
                 if event.type == pygame.QUIT:
@@ -214,8 +204,6 @@ class C4:
                     
                     
             for col in range(NUMB_COLUMNS):
-                #self.make_button("Back", col, 50, 50, None, None, self.add_disk)
-                #for row in range(NUMB_ROWS):
                 self.add_column(col)
                 disks = self.model.column_amount(col)
                 print(disks)
@@ -232,11 +220,10 @@ class C4:
                             color = YELLOW
                     else:
                         color = BLUE
-                        print('None')
                     pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, (6-row)*SIZE + SIZE//2), RADIUS)
-                    #if disk != None:
-                        #if self.model.game_over(disk):
-                            #self.end()
+                    if disk != None:
+                        if self.model.game_over(disk):
+                            self.end()
                     
             pygame.display.update()
         
@@ -267,7 +254,6 @@ class C4:
         """
         sleep(0.2)
         self.model.insert_disk(column)
-        #self.draw_stage()
         
     def add_column(self, col):
         """
@@ -276,6 +262,14 @@ class C4:
         """
         x = col*SIZE + SIZE//2
         self.make_column("", x, 0, 100, 800, BLUE, LIGHT_BLUE, self.add_disk, col)
+        
+    def clear_board(self):
+        """
+        Clears the board and sets up a new game.
+        """
+        #Restarts the entire game.
+        self.__init__()
+                
     
     def game_quit(self):
         pygame.quit()

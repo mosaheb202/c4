@@ -50,6 +50,12 @@ class Model:
         """
         return self._column_amounts[column]
     
+    def get_frame(self):
+        """
+        Return the frame we're using."
+        """
+        return self.frame
+    
     def game_over(self, disk):
         """
         This function checks if the disk that is inserted caused 
@@ -61,34 +67,30 @@ class Model:
         disks.
         
         """
-        x = disk.get_point().getX() # Getting x and y coordinates of the passed in disk object
-        y = disk.get_point().getY()
+        x_coord = disk.get_point().getX() # Getting x and y coordinates of the passed in disk object
+        y_coord = disk.get_point().getY()
         consecutive_disks = [0,0,0,0,0,0,0,0]
         
-        for shift in range (0, 3): # Checking if there is a connection of four disks horizonally, vertically, or diagonally
-            if(self.frame[x + shift][y] == disk):
+        for shift in range (1, 4, 1): # Checking if there is a connection of four disks horizonally, vertically, or diagonally
+            if(x_coord-shift >= 0 and self.frame[x_coord-shift][y_coord] == disk):
+                consecutive_disks[0] += 1
+            if(x_coord+shift <= 6 and self.frame[x_coord+shift][y_coord] == disk):
                 consecutive_disks[1] += 1
-            if(self.frame[x + shift][y + shift] == disk):
-                consecutive_disks[4] += 1
-            if(self.frame[x][y + shift] == disk):
-                consecutive_disks[3] += 1            
-            if(self.frame[x + shift][y - shift] == disk):
-                consecutive_disks[5] += 1
-                    
-            if(self.frame[x][y - shift] == disk):
+            if(y_coord-shift >= 0 and self.frame[x_coord][y_coord-shift] == disk):
                 consecutive_disks[2] += 1
-                
-            if len(self.frame) < x - shift:
-                if(self.frame[x - shift][y] == disk):
-                    consecutive_disks[0] += 1            
-                if(self.frame[x - shift][y + shift] == disk):
-                    consecutive_disks[6] += 1
-            if len(self.frame) < y:
-                if(self.frame[x - shift][y - shift] == disk):
-                    consecutive_disks[7] += 1
+            if(y_coord+shift <= 5 and self.frame[x_coord][y_coord+shift] == disk):
+                consecutive_disks[3] += 1
+            if(x_coord+shift <= 6 and y_coord+shift <= 5 and self.frame[x_coord+shift][y_coord+shift] == disk):
+                consecutive_disks[4] += 1
+            if(x_coord+shift <= 6 and y_coord-shift >= 0 and self.frame[x_coord+shift][y_coord-shift] == disk):
+                consecutive_disks[5] += 1
+            if(x_coord-shift >= 0 and y_coord+shift <= 5 and self.frame[x_coord-shift][y_coord+shift] == disk):
+                consecutive_disks[6] += 1
+            if(x_coord-shift >= 0 and y_coord-shift >= 0 and self.frame[x_coord-shift][y_coord-shift] == disk):
+                consecutive_disks[7] += 1
                 
         if(3 in consecutive_disks): # Returns true if there four disks are connected
-            return True
+            return disk.get_player().get_player_number()
         return False        
     
     def insert_disk(self, column):
