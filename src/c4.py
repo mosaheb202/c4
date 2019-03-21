@@ -163,6 +163,31 @@ class C4:
             #if time_start - pygame.time.get_ticks() > 500:
                 #return False
             #return True
+    
+    def end(self):
+        """
+        Draws the game board and keeps the users on the screen
+        until the user closes the game.
+        """
+        screen_display.fill(BLUE)
+        
+        #time_start = pygame.time.get_ticks()
+        
+        #while self.wait(time_start):
+            #print("buffering")
+            
+        sleep(0.2) #Need to sleep in order for the click to open this screen doesn't also click on this screen
+        
+        start = True
+        while start:
+            p = 3 - self.model.get_player()
+            self.make_button("PLAYER " + p + " WINS", 800//2, 600//2, 500, 70, BLUE, LIGHT_GREEN, self.start)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+        
+        pygame.display.update()     
         
     def draw_stage(self):
         """
@@ -209,6 +234,9 @@ class C4:
                         color = BLUE
                         print('None')
                     pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, (6-row)*SIZE + SIZE//2), RADIUS)
+                    #if disk != None:
+                        #if self.model.game_over(disk):
+                            #self.end()
                     
             pygame.display.update()
         

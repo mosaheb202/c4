@@ -36,7 +36,7 @@ class Disk:
 		"""
 		self.color = color
 	
-	def get_point():
+	def get_point(self):
 		"""
 		Returns the current point
 		"""

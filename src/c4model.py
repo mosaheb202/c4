@@ -27,7 +27,7 @@ class Model:
         self.current_player = 1
         self.available_slots = 42
         self.frame = []
-        self.status = True #True if the current view represents the current model
+        #self.status = True #True if the current view represents the current model
         for i in range(7):
             self.frame.append([None]*7)
         self._column_amounts = [0]*7 #holds the value for the number of disks in each column
@@ -61,27 +61,31 @@ class Model:
         disks.
         
         """
-        x_coord = disk.getPoint().getX() # Getting x and y coordinates of the passed in disk object
-        y_coord = disk.getPoint().getY()
+        x = disk.get_point().getX() # Getting x and y coordinates of the passed in disk object
+        y = disk.get_point().getY()
         consecutive_disks = [0,0,0,0,0,0,0,0]
         
-        for shift in range (1, 4, 1): # Checking if there is a connection of four disks horizonally, vertically, or diagonally
-            if(self.frame[x_coord-shift][y_coord] == disk):
-                consecutive_disks[0] += 1
-            if(self.frame[x_coord+shift][y_coord] == disk):
+        for shift in range (0, 3): # Checking if there is a connection of four disks horizonally, vertically, or diagonally
+            if(self.frame[x + shift][y] == disk):
                 consecutive_disks[1] += 1
-            if(self.frame[x_coord][y_coord-shift] == disk):
-                consecutive_disks[2] += 1
-            if(self.frame[x_coord][y_coord+shift] == disk):
-                consecutive_disks[3] += 1
-            if(self.frame[x_coord+shift][y_coord+shift] == disk):
+            if(self.frame[x + shift][y + shift] == disk):
                 consecutive_disks[4] += 1
-            if(self.frame[x_coord+shift][y_coord-shift] == disk):
+            if(self.frame[x][y + shift] == disk):
+                consecutive_disks[3] += 1            
+            if(self.frame[x + shift][y - shift] == disk):
                 consecutive_disks[5] += 1
-            if(self.frame[x_coord-shift][y_coord+shift] == disk):
-                consecutive_disks[6] += 1
-            if(self.frame[x_coord-shift][y_coord-shift] == disk):
-                consecutive_disks[7] += 1
+                    
+            if(self.frame[x][y - shift] == disk):
+                consecutive_disks[2] += 1
+                
+            if len(self.frame) < x - shift:
+                if(self.frame[x - shift][y] == disk):
+                    consecutive_disks[0] += 1            
+                if(self.frame[x - shift][y + shift] == disk):
+                    consecutive_disks[6] += 1
+            if len(self.frame) < y:
+                if(self.frame[x - shift][y - shift] == disk):
+                    consecutive_disks[7] += 1
                 
         if(3 in consecutive_disks): # Returns true if there four disks are connected
             return True
@@ -106,6 +110,9 @@ class Model:
                     self.turn() # Changes turn to next player once disk is 'inserted' and tells the game to update
                     return True
         return False
+    
+    def get_player(self):
+        return self.current_player
     
     def is_filled(self):
         """
@@ -134,5 +141,5 @@ class Model:
         This function switches the turn of the two players 
         playing the game.
         """
-        self.status = False
+        #self.status = False
         self.current_player = 3 - self.current_player
