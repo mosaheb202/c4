@@ -26,7 +26,7 @@ class Disk:
 	
 	    # Function to get the colour of the disk
 	def getColor(self):
-		return self.color
+		return self.player.get_color()
 	
 	    # Function to set the colour of the disk
 	def setColor(self, color):

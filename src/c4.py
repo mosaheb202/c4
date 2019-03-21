@@ -135,8 +135,17 @@ class C4:
                     
                     
             for col in range(NUMB_COLUMNS):
-                for row in range(NUMB_ROWS):
+                #self.make_button("Back", col, 50, 50, None, None, self.add_disk)
+                #for row in range(NUMB_ROWS):
+                disks = 0 #self.model.column_amount(col)
+                for row in range(0, 6 - disks):
                     pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
+                #for row in range(6 - disks, disks):
+                    #disk = self.model.get_color(col, row) #All of the values that we get should be disks.
+                    #color = disk.getColor()
+                    #pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)                    
+                    
+            #if self.model.update():
                     
             pygame.display.update()
         
@@ -160,12 +169,38 @@ class C4:
             screen_display.blit(HELP_MENU_IMAGE, (0,50))
             self.make_button("Back", 0, 50, 100, 50, RED, LIGHT_RED, self.start)
             pygame.display.update()
+    
+    #def add_disk():
+        #"""
+        #Will add a disk to the model when a column is clicked, then the model will return and call draw_stage.
+        #"""
+        #pass
         
+    #def column():
+        #"""
+        #Update current stage to have 7 columns for actual game play.
+        #These columns are where the players will click in order to drop a disk.
+        #"""
+        #for i in range(0,7):      
+            #self.make_button("", 0, 50, 100, 50, RED, LIGHT_RED, self.start)
+    
+    #def update_game():
+        #"""
+        #Update the view by calling on the Model.
+        #"""
+        #for col in range(NUMB_COLUMNS):
+            #for row in range(NUMB_ROWS):
+                #pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)        
+        
+        #pass
+    
     def game_quit(self):
         pygame.quit()
         quit()
 
 if __name__ == '__main__':
+    game = C4()
+    game.start()
     #c4 = C4()
     #running = False
     #player = c4.model.current_player
@@ -191,8 +226,4 @@ if __name__ == '__main__':
             #player += 1
     #print("Game is done if this is printed")
 
-    #Comment main out to see GUI if there is errors.
-    game = C4()
-    c4.start()
-    
-        
+    #Comment main out to see GUI if there is errors.    

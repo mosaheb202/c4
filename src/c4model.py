@@ -27,8 +27,22 @@ class Model:
         self.current_player = 1
         self.available_slots = 42
         self.frame = []
+        self.status = True #True if the current view represents the current model
         for i in range(7):
             self.frame.append([None]*7)
+        self._column_amounts = [0]*7 #holds the value for the number of disks in each column
+    
+    #def count_column(self, column):
+        #self._column_amounts[column] = 0
+        #for i in self.frame[column]:
+            #if i != None:
+                #self._column_amounts[column] += 1
+    
+    def get_colors(self, column, row):
+            return self.frame[column][row]
+
+    def column_amount(self, column):
+        return self._column_amounts[column]
     
     def game_over(self, disk):
         """
@@ -81,7 +95,8 @@ class Model:
                 if self.frame[row][column] == None:
                     self.frame[row][column] = Disk(point(row, column), self.current_player)
                     self.available_slots -= 1
-                    turn() # Changes turn to next player once disk is 'inserted'
+                    self._column_amounts[column] += 1
+                    turn() # Changes turn to next player once disk is 'inserted' and tells the game to update
                     return True
         return False 
     
@@ -95,9 +110,16 @@ class Model:
             return True
         return False
     
+    def update(self):
+        if self.update == False:
+            return True
+        else:
+            return False
+    
     def turn():
         """
         This function switches the turn of the two players 
         playing the game.
         """
-        self.current_player = 3 - current_player    
+        self.status = False
+        self.current_player = 3 - current_player
