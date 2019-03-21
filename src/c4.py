@@ -75,7 +75,8 @@ class C4:
             pygame.draw.rect(screen_display, original_color, (x, y, width, height))
         
         
-        small_text = pygame.font.Font("freesansbold.ttf", 20)                        
+        #textsize = (height * width)//350
+        small_text = pygame.font.Font("freesansbold.ttf", 20)                       
         text_surface, text_rectangle = self.print_text(text, small_text)
         text_rectangle.center = ((x + (width / 2)), (y + (height / 2)))
         screen_display.blit(text_surface, text_rectangle)
@@ -125,6 +126,7 @@ class C4:
         
         start = True
         while start:
+            self.make_button("Back", 5, 5, 50, 50, RED, LIGHT_RED, self.start)
             for event in pygame.event.get():
                 
                 if event.type == pygame.QUIT:
