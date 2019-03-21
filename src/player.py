@@ -27,6 +27,9 @@ class Player:
         self.numDisks = num_disks 
     
     def get_player_number(self):
+        """
+        Returns the player number
+        """
         return self.number
     
     #def set_player_number(self, number):
