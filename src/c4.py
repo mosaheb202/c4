@@ -36,6 +36,7 @@ BLUE = (0,0,200)
 BLACK = (0,0,0)
 RED = (200,0,0)
 GREEN = (0,200,0)
+YELLOW = (200, 200, 0)
 LIGHT_RED = (245, 0, 0)
 LIGHT_GREEN = (0, 245, 0)
 LIGHT_BLUE = (0, 0, 245)
@@ -197,15 +198,15 @@ class C4:
                     pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
                     
                 for row in range(0, disks + 1):
-                    disk = self.model.get_disk(col, 6-row) #All of the values that we get should be disks.
+                    disk = self.model.get_disk(6-row, col) #All of the values that we get should be disks.
                     if disk != None:
                         p = disk.get_player().get_player_number()
                         if p == 1:
-                            color = GREEN
-                        else:
                             color = RED
+                        else:
+                            color = YELLOW
                     else:
-                        color = WHITE
+                        color = BLUE
                         print('None')
                     pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, (6-row)*SIZE + SIZE//2), RADIUS)
                     
@@ -248,42 +249,9 @@ class C4:
         x = col*SIZE + SIZE//2
         self.make_column("", x, 0, 100, 800, BLUE, LIGHT_BLUE, self.add_disk, col)
     
-    def update_game(self):
-        """
-        Update the view by calling on the Model.
-        """
-        pass
-    
     def game_quit(self):
         pygame.quit()
         quit()
 
-if __name__ == '__main__':
-    game = C4()
-    game.start()
-    #c4 = C4()
-    #running = False
-    #player = c4.model.current_player
-    
-    #while(running == False):
-        #for event in pygame.event.get(): #buffer so game waits for players
-            #print(event)
-            #if event.type == pygame.QUIT:
-                #pygame.display.quit()
-                #running = True
-                #break
-
-            #if player%2 == 1: #player 1
-                ##player 1 drops his disk
-                ##checks for game over
-                #break
-
-            #elif player%2 == 0: #player 2
-                ##player 2 drops his disk
-                ##checks for game over
-                #break
-
-            #player += 1
-    #print("Game is done if this is printed")
-
-    #Comment main out to see GUI if there is errors.    
+game = C4()
+game.start()
