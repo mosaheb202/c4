@@ -7,6 +7,9 @@ import random
 This is the class which actually runs the game.
 It serves the purpose of being a hybrid of the view/controller.
 """
+#Initialize Pygame
+pygame.init()
+
 #Define Dimension constants
 SIZE = 100
 NUMB_COLUMNS = 7
@@ -28,29 +31,34 @@ LIGHT_BLUE = (0, 0, 245)
 WHITE = (255,255,255)
 
 #Define Image and Display Constants
-pygame.init()
-
-#The global screen display is defined here.
-screen_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('C4: A Connect 4 Game')
-clock = pygame.time.Clock()  
-
 HELP_MENU_IMAGE = pygame.image.load('c4helpmenu.png')
 
-pygame.init()
+screen_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+clock = pygame.time.Clock()
 
 def print_text(text, font):
+    """
+    Loads the text onto the surface.
+    """
+    
     text_surface = font.render(text, True, WHITE)
     return text_surface, text_surface.get_rect()
 
 def make_button(text, x, y, width, height, original_color, active_colour, func):
+    """
+    Creat a button with text and postion x,y. The button is rectangle, so
+    it has its own width, height, color, and color that it turns into when
+    highlighted. Perform the function func when pressed.
+    """
+    
     user_mouse = pygame.mouse.get_pos()
     user_click = pygame.mouse.get_pressed()
 
-    # if user hovers over button
+    #If the user hovers over the button, show some activity by changing color.
     if x + width > user_mouse[0] > x and y + height > user_mouse[1] > y:
         pygame.draw.rect(screen_display, active_colour,(x, y, width, height))
         
+        #If the user clicks the button, execute the function func.
         if user_click[0] == 1 and func != None:
             func()
     else:
@@ -64,12 +72,15 @@ def make_button(text, x, y, width, height, original_color, active_colour, func):
         
                                 
 def start_screen():
-                                    
+    """
+    Displays the start menu at upon the start of the game.
+    """
+    #This loop makes sure that events are being processed.
     start = True
-                                        
+    
     while start:
         for event in pygame.event.get():
-            # print(event)                                    
+            
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -100,12 +111,12 @@ def draw_stage():
     Draws the game board and keeps the users on the screen
     until the user closes the game.
     """
-    #screen_display.fill(BLUE)
+    screen_display.fill(BLUE)
     
     start = True
     while start:
         for event in pygame.event.get():
-            # print(event)                                    
+            
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -113,24 +124,20 @@ def draw_stage():
                 
         for col in range(NUMB_COLUMNS):
             for row in range(NUMB_ROWS):
-                pygame.draw.rect(screen_display, BLUE, [col*SIZE, row*SIZE + SIZE, SIZE, SIZE])
                 pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
             
         pygame.display.update()
-
-def create_stage():
-        """
-        Returns the game board after setting the dimensions and drawing it.
-        """
-        stage = pygame.display.set_mode([SCREEN_HEIGHT + SIZE, 800])
-        draw_stage(stage)
-        return stage
     
 def help_menu():
+    """
+    Displays the help screen that explains the game's rules
+    at the click of a button.
+    """
+    
     start = True
     while start:
         for event in pygame.event.get():
-            # print(event)                                    
+            
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
