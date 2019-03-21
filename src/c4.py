@@ -1,7 +1,7 @@
 import pygame
 import time
 import random
-#from c4model import Model
+from c4model import Model
 
 """
 This is the class which actually runs the game.
@@ -36,123 +36,6 @@ HELP_MENU_IMAGE = pygame.image.load('c4helpmenu.png')
 screen_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 
-def print_text(text, font):
-    """
-    Loads the text onto the surface.
-    """
-    
-    text_surface = font.render(text, True, WHITE)
-    return text_surface, text_surface.get_rect()
-
-def make_button(text, x, y, width, height, original_color, active_colour, func):
-    """
-    Creat a button with text and postion x,y. The button is rectangle, so
-    it has its own width, height, color, and color that it turns into when
-    highlighted. Perform the function func when pressed.
-    """
-    
-    user_mouse = pygame.mouse.get_pos()
-    user_click = pygame.mouse.get_pressed()
-
-    #If the user hovers over the button, show some activity by changing color.
-    if x + width > user_mouse[0] > x and y + height > user_mouse[1] > y:
-        pygame.draw.rect(screen_display, active_colour,(x, y, width, height))
-        
-        #If the user clicks the button, execute the function func.
-        if user_click[0] == 1 and func != None:
-            func()
-    else:
-        pygame.draw.rect(screen_display, original_color, (x, y, width, height))
-    
-    
-    small_text = pygame.font.Font("freesansbold.ttf", 20)                        
-    text_surface, text_rectangle = print_text(text, small_text)
-    text_rectangle.center = ((x + (width / 2)), (y + (height / 2)))
-    screen_display.blit(text_surface, text_rectangle)
-        
-                                
-def start_screen():
-    """
-    Displays the start menu at upon the start of the game.
-    """
-    #This loop makes sure that events are being processed.
-    start = True
-    
-    while start:
-        for event in pygame.event.get():
-            
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-                
-        screen_display.fill(BLACK)
-
-        large_text = pygame.font.Font('freesansbold.ttf', 64)
-                                                            
-        text_surface, text_rectangle = print_text("C4: A Connect 4 Game", large_text)
-        text_rectangle.center = ((SCREEN_WIDTH / 2),(SCREEN_HEIGHT / 2))
-        screen_display.blit(text_surface, text_rectangle)
-
-        # start button
-        make_button("Start!", 150, 450, 100, 70, GREEN, LIGHT_GREEN, draw_stage)
-                                                                
-        # help button
-        make_button("Help", 350, 450, 100, 70, BLUE, LIGHT_BLUE, help_menu)
-                                                                
-        # exit button
-        make_button("Exit", 550, 450, 100, 70, RED, LIGHT_RED, game_quit)
-                                                                    
-                                                                    
-        pygame.display.update()
-        clock.tick(15)
-        
-def draw_stage():
-    """
-    Draws the game board and keeps the users on the screen
-    until the user closes the game.
-    """
-    screen_display.fill(BLUE)
-    
-    start = True
-    while start:
-        for event in pygame.event.get():
-            
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-                
-                
-        for col in range(NUMB_COLUMNS):
-            for row in range(NUMB_ROWS):
-                pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
-                
-        pygame.display.update()
-    
-def help_menu():
-    """
-    Displays the help screen that explains the game's rules
-    at the click of a button.
-    """
-    
-    start = True
-    while start:
-        for event in pygame.event.get():
-            
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-        
-        screen_display.fill(BLACK)
-        
-        #Back Button
-        screen_display.blit(HELP_MENU_IMAGE, (0,50))
-        make_button("Back", 0, 50, 100, 50, RED, LIGHT_RED, start_screen)
-        pygame.display.update()
-    
-def game_quit():
-    pygame.quit()
-    quit()
-
 class C4:
 
     def __init__(self):
@@ -160,16 +43,125 @@ class C4:
         Initialize the model and view to start up the game
         """
         self.model = Model()
-        self.view = View(self.model)
-        self.start(self.view)
+        #self.view = View(self.model)
+        self.start()
         
-    def start(self, v):
+    def print_text(self, text, font):
         """
-        Starts up the game bringing up the start screen
+        Loads the text onto the surface.
         """
-        #model = Model()
-        #view = View(model)
-        stage = start_screen()
+        
+        text_surface = font.render(text, True, WHITE)
+        return text_surface, text_surface.get_rect()
+    
+    def make_button(self, text, x, y, width, height, original_color, active_colour, func):
+        """
+        Creat a button with text and postion x,y. The button is rectangle, so
+        it has its own width, height, color, and color that it turns into when
+        highlighted. Perform the function func when pressed.
+        """
+        
+        user_mouse = pygame.mouse.get_pos()
+        user_click = pygame.mouse.get_pressed()
+    
+        #If the user hovers over the button, show some activity by changing color.
+        if x + width > user_mouse[0] > x and y + height > user_mouse[1] > y:
+            pygame.draw.rect(screen_display, active_colour,(x, y, width, height))
+            
+            #If the user clicks the button, execute the function func.
+            if user_click[0] == 1 and func != None:
+                func()
+        else:
+            pygame.draw.rect(screen_display, original_color, (x, y, width, height))
+        
+        
+        small_text = pygame.font.Font("freesansbold.ttf", 20)                        
+        text_surface, text_rectangle = self.print_text(text, small_text)
+        text_rectangle.center = ((x + (width / 2)), (y + (height / 2)))
+        screen_display.blit(text_surface, text_rectangle)
+            
+                                    
+    def start(self):
+        """
+        Displays the start menu at upon the start of the game.
+        """
+        #This loop makes sure that events are being processed.
+        start = True
+        
+        while start:
+            for event in pygame.event.get():
+                
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                    
+            screen_display.fill(BLACK)
+    
+            large_text = pygame.font.Font('freesansbold.ttf', 64)
+                                                                
+            text_surface, text_rectangle = self.print_text("C4: A Connect 4 Game", large_text)
+            text_rectangle.center = ((SCREEN_WIDTH / 2),(SCREEN_HEIGHT / 2))
+            screen_display.blit(text_surface, text_rectangle)
+    
+            # start button
+            self.make_button("Start!", 150, 450, 100, 70, GREEN, LIGHT_GREEN, self.draw_stage)
+                                                                    
+            # help button
+            self.make_button("Help", 350, 450, 100, 70, BLUE, LIGHT_BLUE, self.help_menu)
+                                                                    
+            # exit button
+            self.make_button("Exit", 550, 450, 100, 70, RED, LIGHT_RED, self.game_quit)
+                                                                        
+                                                                        
+            pygame.display.update()
+            clock.tick(15)
+            
+    def draw_stage(self):
+        """
+        Draws the game board and keeps the users on the screen
+        until the user closes the game.
+        """
+        screen_display.fill(BLUE)
+        
+        start = True
+        while start:
+            for event in pygame.event.get():
+                
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                    
+                    
+            for col in range(NUMB_COLUMNS):
+                for row in range(NUMB_ROWS):
+                    pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
+                    
+            pygame.display.update()
+        
+    def help_menu(self):
+        """
+        Displays the help screen that explains the game's rules
+        at the click of a button.
+        """
+        
+        start = True
+        while start:
+            for event in pygame.event.get():
+                
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            
+            screen_display.fill(BLACK)
+            
+            #Back Button
+            screen_display.blit(HELP_MENU_IMAGE, (0,50))
+            self.make_button("Back", 0, 50, 100, 50, RED, LIGHT_RED, self.start)
+            pygame.display.update()
+        
+    def game_quit(self):
+        pygame.quit()
+        quit()
 
 if __name__ == '__main__':
     #c4 = C4()
@@ -195,9 +187,10 @@ if __name__ == '__main__':
                 #break
 
             #player += 1
-    print("Game is done if this is printed")
+    #print("Game is done if this is printed")
 
     #Comment main out to see GUI if there is errors.
-    start_screen()
+    game = C4()
+    c4.start()
     
         

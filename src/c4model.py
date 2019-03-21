@@ -1,7 +1,7 @@
 import pygame
-from player import Player
-from point import Point
-from disk import Disk
+import player
+import point
+import disk
 
 """
 This is a model class. This class is used to update and keep track of 
