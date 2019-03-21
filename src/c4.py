@@ -182,12 +182,20 @@ class C4:
                 self.add_column(col)
                 disks = self.model.column_amount(col)
                 print(disks)
-                for row in range(0, 6 - disks):
+                for row in range(0, NUMB_ROWS - disks):
                     pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
-                for row in range(6 - disks, disks):
-                    disk = self.model.get_disk(col, row) #All of the values that we get should be disks.
-                    color = disk.get_color()
-                    pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)                    
+                for row in range(0, disks + 1):
+                    disk = self.model.get_disk(col, 6-row) #All of the values that we get should be disks.
+                    if disk != None:
+                        p = disk.get_player().get_player_number()
+                        if p == 1:
+                            color = GREEN
+                        else:
+                            color = RED
+                    else:
+                        color = WHITE
+                        print('None')
+                    pygame.draw.circle(screen_display, color, (col*SIZE + SIZE, (6-row)*SIZE + SIZE//2), RADIUS)                    
                     
             #if self.model.update():
                     
