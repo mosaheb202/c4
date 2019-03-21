@@ -107,15 +107,19 @@ continue to go back and forth until the game is over.
 4) Try to win. The first player to get four disks in a row vertically,
 horizontally, or diagonally wins.
 
-5) While you are playing the game, you can click the 'back' button to return 
+5) While you are playing the game, you can click the '<' button to return 
 to the main menu. This is useful if you want to visit the 'How to Play' section.
 Don't worry, your game progress will be saved!
 
-6) Once the game is over, you can click on 'X' on your window to terminate the 
+6) You can also click the 'Re' button while in game. This will send you back to 
+the main menu, however, it will reset your game. Your game progress will not 
+be saved!
+
+7) Once the game is over, you can click on 'X' on your window to terminate the 
 program. You can also click on the 'restart' button, it will send you to the main 
 menu where you can choose to play the game again.
 
-7) For more information, click on the 'How to Play' button in the main menu.
+8) For more information, click on the 'How to Play' button in the main menu.
 
 ### Documentation
 
