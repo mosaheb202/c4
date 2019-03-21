@@ -48,7 +48,7 @@ class C4:
         
     def print_text(self, text, font):
         """
-        Loads the text onto the surface.
+        Loads the text onto the screen.
         """
         
         text_surface = font.render(text, True, WHITE)
@@ -56,9 +56,9 @@ class C4:
     
     def make_button(self, text, x, y, width, height, original_color, active_colour, func):
         """
-        Creat a button with text and postion x,y. The button is rectangle, so
-        it has its own width, height, color, and color that it turns into when
-        highlighted. Perform the function func when pressed.
+        Creates a button with text and postion x, y on the GUI. The button is a rectangle, so
+        it has its own width, height, color and active color that it turns lighter when the user
+        hovers over it. The button also performs the function that is passed in when clicked.
         """
         
         user_mouse = pygame.mouse.get_pos()
@@ -86,7 +86,7 @@ class C4:
         """
         Displays the start menu at upon the start of the game.
         """
-        #This loop makes sure that events are being processed.
+        # loop makes sure that events are being processed.
         start = True
         
         while start:

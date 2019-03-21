@@ -10,7 +10,7 @@ display to the user.
 
 class Disk:
 	def __init__(self, point, player):
-		#I removed self.color, because I don't know how each player will be choosing the color.
+		
 		if player == 1:
 			self.player = Player(1)
 		else:
@@ -18,33 +18,51 @@ class Disk:
 		self.point = point
 		self.dropped = False
 	
-	def getPlayer(self):
+	def get_player(self):
 		"""
 		Returns the current player
 		"""
 		return self.player
 	
-	    # Function to get the colour of the disk
-	def getColor(self):
+    
+	def get_color(self):
+        """
+        Returns the current colour
+        """
 		return self.color
 	
-	    # Function to set the colour of the disk
-	def setColor(self, color):
+    
+	def set_color(self, color):
+        """
+        Sets the current colour
+        """
 		self.color = color
 	
-	def getPoint():
+	def get_point():
+        """
+        Returns the current point
+        """
 		return self.point
 
-	# Function to check of disk is dropped
-	def isDropped(self):
+
+	def is_dropped(self):
+        """
+        Returns if the disk is dropped
+        """
 		return self.dropped
     
-	# Function to change the status of a disk when dropped
-	def changeDiskStatus(self):
+
+	def change_disk_status(self):
+        """
+        Returns if the disk is dropped
+        """
 		if (self.dropped is False):
 			self.dropped = True
 		
 	def __eq__(self, other):
+        """
+        Returns if players are the same
+        """
 		if self.player.get_player_number() == other.player.get_player_number():
 			return True
 		return False

@@ -14,15 +14,27 @@ class Player:
         self.numDisks = num_disks 
     
     def get_player_number(self):
+        """
+        Returns the player number
+        """
         return self.number
     
     def set_player_number(self, number):
+        """
+        Sets the player number
+        """
         self.number = number
         
     def get_color_disk(self):
+        """
+        Returns the disk colour
+        """
         return self.color
     
     def set_color_disk(self, color_disk):
+        """
+        Sets the disk colour
+        """
         self.color = color_disk
     
     
