@@ -108,13 +108,15 @@ continue to go back and forth until the game is over.
 horizontally, or diagonally wins.
 
 5) Once the game is over, click on 'X' on your window. It will terminate the 
-application. If you want to play again, you must relaunch the game.
+application. If you want to play again, you must relaunch the game. Alternatively, 
+you can click the back button which will send you to the main menu, however, your 
+game progress will be lost.
 
 6) For more information, click on the 'How to Play' button in the main menu.
 
 ### Documentation
 
-Refer to 'documentation.pdf' in the c4 directory.
+Refer to '[documentation.pdf](https://github.com/osamaramihafez/c4/blob/master/documentation.pdf)' in the c4 directory.
 
 ### Built With
 
@@ -133,4 +135,11 @@ The following five people contributed to the development of this game:
 
 ### License
 
-This game is built under the [MIT License](https://tasdikrahman.mit-license.org/)
+This game is built under the [MIT License](https://tasdikrahman.mit-license.org/).
+
+### Acknowledgements
+
+We give credit to the following people for helping us develop this game.
+
+* [Harrison Kensley](https://pythonprogramming.net/pygame-start-menu-tutorial/) - With the help of his tutorial, we were able to make a proper GUI with button functionalities.
+* [Billie Thompson](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) - Her README.md template helped guide us in making our very first README.md.
