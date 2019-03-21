@@ -62,8 +62,8 @@ You have successfully installed C4!
 
 ### Running the Game
 
-There are 2 options to run this game. 'Option i' is to be used if 
-'option ii' does not work.
+There are 2 options to run this game. 'Option 1' is to be used if 
+'Option 2' does not work.
 
 * Option 1 
     1) Open up PowerShell or Terminal
