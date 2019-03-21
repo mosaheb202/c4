@@ -125,7 +125,7 @@ def draw_stage():
         for col in range(NUMB_COLUMNS):
             for row in range(NUMB_ROWS):
                 pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
-            
+                
         pygame.display.update()
     
 def help_menu():
@@ -142,8 +142,11 @@ def help_menu():
                 pygame.quit()
                 quit()
         
-        screen_display.fill(BLACK)        
+        screen_display.fill(BLACK)
+        
+        #Back Button
         screen_display.blit(HELP_MENU_IMAGE, (0,50))
+        make_button("Back", 0, 50, 100, 50, RED, LIGHT_RED, start_screen)
         pygame.display.update()
     
 def game_quit():
@@ -169,29 +172,29 @@ class C4:
         stage = start_screen()
 
 if __name__ == '__main__':
-    c4 = C4()
-    running = False
-    player = c4.model.current_player
+    #c4 = C4()
+    #running = False
+    #player = c4.model.current_player
     
-    while(running == False):
-        for event in pygame.event.get(): #buffer so game waits for players
-            print(event)
-            if event.type == pygame.QUIT:
-                pygame.display.quit()
-                running = True
-                break
+    #while(running == False):
+        #for event in pygame.event.get(): #buffer so game waits for players
+            #print(event)
+            #if event.type == pygame.QUIT:
+                #pygame.display.quit()
+                #running = True
+                #break
 
-            if player%2 == 1: #player 1
-                #player 1 drops his disk
-                #checks for game over
-                break
+            #if player%2 == 1: #player 1
+                ##player 1 drops his disk
+                ##checks for game over
+                #break
 
-            elif player%2 == 0: #player 2
-                #player 2 drops his disk
-                #checks for game over
-                break
+            #elif player%2 == 0: #player 2
+                ##player 2 drops his disk
+                ##checks for game over
+                #break
 
-            player += 1
+            #player += 1
     print("Game is done if this is printed")
 
     #Comment main out to see GUI if there is errors.
