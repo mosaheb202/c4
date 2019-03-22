@@ -149,33 +149,20 @@ class C4:
             pygame.display.update()
             
             clock.tick(15)
-            
-    #def wait(self, time_start):
-            #"""
-            #A function that allows the view to wait for the transition of screens
-            #"""
-            #if time_start - pygame.time.get_ticks() > 500:
-                #return False
-            #return True
     
     def end(self):
         """
         Draws the game board and keeps the users on the screen
         until the user closes the game.
         """
-        screen_display.fill(BLUE)
+        screen_display.fill(BLACK)
         
-        #time_start = pygame.time.get_ticks()
-        
-        #while self.wait(time_start):
-            #print("buffering")
-            
-        sleep(0.2) #Need to sleep in order for the click to open this screen doesn't also click on this screen
+        sleep(0.2)
         
         start = True
         while start:
             p = 3 - self.model.get_player()
-            self.make_button("PLAYER " + str(p) + " WINS", 800//2, 600//2, 500, 70, BLUE, LIGHT_GREEN, self.clear_board)
+            self.make_button("PLAYER " + str(p) + " WINS", 155, 240, 500, 70, BLUE, LIGHT_BLUE, self.clear_board)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -206,7 +193,6 @@ class C4:
             for col in range(NUMB_COLUMNS):
                 self.add_column(col)
                 disks = self.model.column_amount(col)
-                print(disks)
                 for row in range(0, NUMB_ROWS - disks):
                     pygame.draw.circle(screen_display, BLACK, (col*SIZE + SIZE, row*SIZE + SIZE//2), RADIUS)
                     

@@ -23,20 +23,12 @@ class Model:
         """
         An init function that is used to create and update the game board object.
         """
-        #self.commands = c4_commands(); #added a command queue
         self.current_player = 1
         self.available_slots = 42
         self.frame = []
-        #self.status = True #True if the current view represents the current model
         for i in range(7):
             self.frame.append([None]*7)
         self._column_amounts = [0]*7 #holds the value for the number of disks in each column
-    
-    #def count_column(self, column):
-        #self._column_amounts[column] = 0
-        #for i in self.frame[column]:
-            #if i != None:
-                #self._column_amounts[column] += 1
     
     def get_disk(self, column, row):
         """
@@ -143,5 +135,4 @@ class Model:
         This function switches the turn of the two players 
         playing the game.
         """
-        #self.status = False
         self.current_player = 3 - self.current_player
