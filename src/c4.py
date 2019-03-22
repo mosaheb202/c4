@@ -157,7 +157,7 @@ class C4:
         """
         screen_display.fill(BLACK)
         
-        sleep(0.2)
+        sleep(0.4)
         
         start = True
         while start:
