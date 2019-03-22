@@ -30,14 +30,8 @@ class Player:
         Returns the player number
         """
         return self.number
-    
-    #def set_player_number(self, number):
-        #self.number = number
         
     def get_color(self):
         return self.color
-    
-    #def set_color_disk(self, color_disk):
-        #self.color = color_disk
     
     

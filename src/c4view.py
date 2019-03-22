@@ -31,7 +31,6 @@ LIGHT_BLUE = (0, 0, 245)
 WHITE = (255,255,255)
 
 #Define Image Constants
-#HELP_MENU_IMAGE = pygame.image.load('Images/C4 Help Menu.png')
 
 pygame.init()
 
@@ -49,7 +48,6 @@ class View:
     
     def __init__(self, model):
         self.model = model
-        #pygame.init()
         self.stage = self.create_stage()
         
     def get_model():
@@ -93,7 +91,6 @@ class View:
                                             
         while intro:
             for event in pygame.event.get():
-                # print(event)
                                                     
                 if event.type == pygame.QUIT:
                     pygame.quit()
