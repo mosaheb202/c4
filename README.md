@@ -116,8 +116,8 @@ the main menu, however, it will reset your game. Your game progress will not
 be saved!
 
 7) Once the game is over, you can click on 'X' on your window to terminate the 
-program. You can also click on the 'restart' button, it will send you to the main 
-menu where you can choose to play the game again.
+program. You can also click on the 'player # wins' message, it will send you 
+to the main menu where you can choose to play the game again.
 
 8) For more information, click on the 'How to Play' button in the main menu.
 
