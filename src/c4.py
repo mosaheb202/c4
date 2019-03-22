@@ -175,7 +175,7 @@ class C4:
         start = True
         while start:
             p = 3 - self.model.get_player()
-            self.make_button("PLAYER " + str(p) + " WINS", 800//2, 600//2, 500, 70, BLUE, LIGHT_GREEN, self.start)
+            self.make_button("PLAYER " + str(p) + " WINS", 800//2, 600//2, 500, 70, BLUE, LIGHT_GREEN, self.clear_board)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
